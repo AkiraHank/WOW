@@ -1,0 +1,3 @@
+"D:\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\WOW.dir/objects.a
+D:\Documents\mingw64\bin\ar.exe cr CMakeFiles\WOW.dir/objects.a @CMakeFiles\WOW.dir\objects1.rsp
+D:\Documents\mingw64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\WOW.dir/objects.a -Wl,--no-whole-archive  -o WOW.exe -Wl,--out-implib,libWOW.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\WOW.dir\linklibs.rsp
