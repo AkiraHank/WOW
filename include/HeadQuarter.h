@@ -4,13 +4,14 @@
 
 #ifndef WOW_BASE_H
 #define WOW_BASE_H
+#include <cstdio>
 #include <vector>
 #include <string>
 #include "Soldier.h"
 #include "Weapon.h"
 class Base {
 public:
-    Base(string _name):name(_name){}
+    Base(std::string _name):name(_name){}
     ~Base(){
         for(auto p:_soldiers){
             free(p);
@@ -25,7 +26,7 @@ public:
 
     void create(int _idx, int _hp);
     void alloc_weapon(Soldier* _soldier, int _id);
-    void test(Soldier*);
+
     int blueOrder[5] = {0,1,2,3,4};
     int redOrder[5] = {1,4,3,0,2};
 

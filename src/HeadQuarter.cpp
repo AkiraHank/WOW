@@ -56,6 +56,3 @@ void Base::alloc_weapon(Soldier* _soldier, int _id) {
     }
 }
 
-void Base::test(Soldier* _soldier){
-    printf("909\n");
-}
