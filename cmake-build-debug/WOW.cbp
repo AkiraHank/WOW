@@ -110,6 +110,9 @@
 		<Unit filename="D:/Documents/ClionProjects/WOW/test.cpp">
 			<Option target="WOW"/>
 		</Unit>
+		<Unit filename="D:/Documents/ClionProjects/WOW/test.h">
+			<Option target="WOW"/>
+		</Unit>
 		<Unit filename="D:/Documents/ClionProjects/WOW/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

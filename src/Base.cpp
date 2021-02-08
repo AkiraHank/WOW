@@ -4,6 +4,7 @@
 
 #include "../include/Base.h"
 
+
 void Base::create(int _idx, int _hp) {
     int* order;
     if(this->name == "red") order = blueOrder;
@@ -38,7 +39,7 @@ void Base::create(int _idx, int _hp) {
     }
 }
 
-void Base::alloc_weapon(Soldier*_soldier, int _id) {
+void Base::alloc_weapon(Soldier* _soldier, int _id) {
     switch(_id%3){
         case 0: {
 
@@ -53,4 +54,8 @@ void Base::alloc_weapon(Soldier*_soldier, int _id) {
             break;
         }
     }
+}
+
+void Base::test(Soldier* _soldier){
+    printf("909\n");
 }

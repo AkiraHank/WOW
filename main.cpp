@@ -8,8 +8,8 @@ void test(Soldier* soldier){
 }
 
 int main() {
-    Base* Red_base = new Base();
-    Base* Blue_base = new Base();
+    Base* Red_base = new Base("red");
+    Base* Blue_base = new Base("blue");
 
     auto _iceman = new iceman(10,10,10);
     test(_iceman);
