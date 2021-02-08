@@ -9,13 +9,14 @@
 class Weapon{
 public:
     Weapon(){};
-    virtual ~Weapon() = 0;
+    virtual ~Weapon(){}
     virtual void attack(Soldier*) = 0;
     int _damage;
     int _wNum;
-
+    static bool sortWeapon(Weapon*,Weapon*);
     Soldier* _user;
 
+    static std::string wOrder[3];
 private:
 };
 
@@ -23,20 +24,23 @@ class sword : public Weapon{
 public:
     sword(int _dmg){
         _damage = _dmg*0.2;
+        _wNum = 0;
     }
 
-    ~sword();
+    ~sword(){}
 
     void attack(Soldier*);
 };
 
 class bomb : public Weapon{
 public:
+    bool status = true;
     bomb(int _dmg){
         _damage = _dmg*0.4;
+        _wNum = 1;
     }
 
-    ~bomb();
+    ~bomb(){}
 
     void attack(Soldier*);
 };
@@ -45,8 +49,9 @@ class arrow : public Weapon{
 public:
     arrow(int _dmg){
         _damage = _dmg*0.3;
+        _wNum = 2;
     }
-    ~arrow();
+    ~arrow(){}
 
     void attack(Soldier*);
 private:

@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Documents/ClionProjects/WOW/main.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/main.cpp.obj"
-  "D:/Documents/ClionProjects/WOW/src/Base.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/src/Base.cpp.obj"
   "D:/Documents/ClionProjects/WOW/src/City.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/src/City.cpp.obj"
+  "D:/Documents/ClionProjects/WOW/src/HeadQuarter.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj"
   "D:/Documents/ClionProjects/WOW/src/Soldier.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/src/Soldier.cpp.obj"
   "D:/Documents/ClionProjects/WOW/src/Weapon.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/src/Weapon.cpp.obj"
   "D:/Documents/ClionProjects/WOW/test.cpp" "D:/Documents/ClionProjects/WOW/cmake-build-debug/CMakeFiles/WOW.dir/test.cpp.obj"

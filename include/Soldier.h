@@ -5,96 +5,107 @@
 #ifndef WOW_SOLDIER_H
 #define WOW_SOLDIER_H
 #include <vector>
-#include "Weapon.h"
-#include "Base.h"
+#include <iostream>
+class Weapon;
+class HeadQuarter;
 
 class Soldier{
 public:
+    Soldier(int hp, int dam, int id):_strength(hp),_damage(dam),_id(id){}
+    virtual ~Soldier(){
+        printf("Soldier destructed!\n");
+    }
     int _strength;
     int _id;
     int _damage;
+    int _typeId;
 
     std::vector<Weapon*> _weapons;
     int _weaponIdx;
 
     virtual void attack(int , Soldier*)=0;
-    virtual void get_weapon(int _idx)=0;
-    virtual void yell()=0;
+    virtual void get_weapon()=0;
+    void report();
     void die();
     void hurted(int);
 
-    Base* base;
-    void march();
+    HeadQuarter* base;
+    virtual void march()=0;
 };
 
 
 class dragon : public Soldier{
 public:
-    dragon(int hp, int dam, int id):strength(hp),_damage(dam),_id(id){
-        pritnf("dragon %d born\n",_id);
-        get_weapon(id);
+    dragon(int hp, int dam, int id):Soldier(hp,dam,id){
+        printf("dragon %d born\n",_id);
+        this->_typeId = 4;
+        get_weapon();
     }
     ~dragon();
 
     void yell();
-    void attack(int, Soldier*);
-    void get_weapon(int _idx);
+    void attack(int, Soldier*) override;
+    void get_weapon() override;
+    void march() override;
 };
 
 class ninja : public Soldier{
 public:
-    ninja(int hp, int dam, int id):strength(hp),_damage(dam),_id(id),Soldier(){
-        pritnf("ninja %d born\n",_id);
-        get_weapon(id);
+    ninja(int hp, int dam, int id):Soldier(hp,dam,id){
+        printf("ninja %d born\n",_id);
+        this->_typeId = 3;
+        get_weapon();
     }
     ~ninja();
 
-    void yell();
-    void attack(int, Soldier*);
-    void get_weapon(int _idx);
+    void attack(int, Soldier*) override;
+    void get_weapon() override;
+    void march() override;
 };
 
 class iceman : public Soldier{
 public:
-    iceman(int hp, int dam, int id):strength(hp),_damage(dam),_id(id),Soldier(){
-        pritnf("iceman %d born\n",_id);
-        get_weapon(id);
+    iceman(int hp, int dam, int id):Soldier(hp,dam,id){
+        printf("iceman %d born\n",_id);
+        this->_typeId = 0;
+        get_weapon();
     }
     ~iceman();
 
-    void yell();
-    void attack(int, Soldier*);
-    void get_weapon(int _idx);
+    void attack(int, Soldier*) override;
+    void get_weapon() override;
+    void march() override;
 };
 
 class lion : public Soldier{
 public:
-    lion(int hp, int dam, int id, int loy):strength(hp),_damage(dam),_id(id),loyalty(loy),Soldier(){
-        pritnf("lion %d born\n",_id);
-        get_weapon(id);
+    lion(int hp, int dam, int id, int loy):Soldier(hp,dam,id),loyalty(loy){
+        printf("lion %d born\n",_id);
+        this->_typeId = 1;
+        get_weapon();
     }
     ~lion();
 
-    void yell();
-    void attack(int, Soldier*);
-    void get_weapon(int _idx);
+    void attack(int, Soldier*) override;
+    void get_weapon() override;
+    void march() override;
     int loyalty;
 };
 
 class wolf : public Soldier{
 public:
-    wolf(int hp, int dam, int id):strength(hp),_damage(dam),_id(id),Soldier(){
-        pritnf("wolf %d born\n",_id);
-        get_weapon(id);
+    wolf(int hp, int dam, int id):Soldier(hp,dam,id){
+        printf("wolf %d born\n",_id);
+        this->_typeId = 2;
     }
     ~wolf();
     void rob(Soldier* _soldier){
 
     }
 
-    void yell();
-    void attack(int, Soldier*);
-    void get_weapon(int _idx);
+    void attack(int, Soldier*) override;
+    void get_weapon() override{}
+    void march() override;
 };
 
 #endif //WOW_SOLDIER_H

@@ -89,18 +89,18 @@ CMakeFiles/WOW.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WOW.dir/main.cpp.s"
 	D:\Documents\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Documents\ClionProjects\WOW\main.cpp -o CMakeFiles\WOW.dir\main.cpp.s
 
-CMakeFiles/WOW.dir/src/Base.cpp.obj: CMakeFiles/WOW.dir/flags.make
-CMakeFiles/WOW.dir/src/Base.cpp.obj: ../src/Base.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Documents\ClionProjects\WOW\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/WOW.dir/src/Base.cpp.obj"
-	D:\Documents\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\WOW.dir\src\Base.cpp.obj -c D:\Documents\ClionProjects\WOW\src\Base.cpp
+CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj: CMakeFiles/WOW.dir/flags.make
+CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj: ../src/HeadQuarter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Documents\ClionProjects\WOW\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj"
+	D:\Documents\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\WOW.dir\src\HeadQuarter.cpp.obj -c D:\Documents\ClionProjects\WOW\src\HeadQuarter.cpp
 
-CMakeFiles/WOW.dir/src/Base.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WOW.dir/src/Base.cpp.i"
-	D:\Documents\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Documents\ClionProjects\WOW\src\Base.cpp > CMakeFiles\WOW.dir\src\Base.cpp.i
+CMakeFiles/WOW.dir/src/HeadQuarter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WOW.dir/src/HeadQuarter.cpp.i"
+	D:\Documents\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Documents\ClionProjects\WOW\src\HeadQuarter.cpp > CMakeFiles\WOW.dir\src\HeadQuarter.cpp.i
 
-CMakeFiles/WOW.dir/src/Base.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WOW.dir/src/Base.cpp.s"
-	D:\Documents\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Documents\ClionProjects\WOW\src\Base.cpp -o CMakeFiles\WOW.dir\src\Base.cpp.s
+CMakeFiles/WOW.dir/src/HeadQuarter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WOW.dir/src/HeadQuarter.cpp.s"
+	D:\Documents\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Documents\ClionProjects\WOW\src\HeadQuarter.cpp -o CMakeFiles\WOW.dir\src\HeadQuarter.cpp.s
 
 CMakeFiles/WOW.dir/src/Soldier.cpp.obj: CMakeFiles/WOW.dir/flags.make
 CMakeFiles/WOW.dir/src/Soldier.cpp.obj: ../src/Soldier.cpp
@@ -157,7 +157,7 @@ CMakeFiles/WOW.dir/test.cpp.s: cmake_force
 # Object files for target WOW
 WOW_OBJECTS = \
 "CMakeFiles/WOW.dir/main.cpp.obj" \
-"CMakeFiles/WOW.dir/src/Base.cpp.obj" \
+"CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj" \
 "CMakeFiles/WOW.dir/src/Soldier.cpp.obj" \
 "CMakeFiles/WOW.dir/src/Weapon.cpp.obj" \
 "CMakeFiles/WOW.dir/src/City.cpp.obj" \
@@ -167,7 +167,7 @@ WOW_OBJECTS = \
 WOW_EXTERNAL_OBJECTS =
 
 WOW.exe: CMakeFiles/WOW.dir/main.cpp.obj
-WOW.exe: CMakeFiles/WOW.dir/src/Base.cpp.obj
+WOW.exe: CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj
 WOW.exe: CMakeFiles/WOW.dir/src/Soldier.cpp.obj
 WOW.exe: CMakeFiles/WOW.dir/src/Weapon.cpp.obj
 WOW.exe: CMakeFiles/WOW.dir/src/City.cpp.obj

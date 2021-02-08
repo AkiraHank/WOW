@@ -1,18 +1,20 @@
 //
 // Created by Hank on 2021/2/5.
 //
-
-#ifndef WOW_BASE_H
-#define WOW_BASE_H
+#ifndef WOW_HEADQUARTER_H
+#define WOW_HEADQUARTER_H
 #include <cstdio>
 #include <vector>
 #include <string>
-#include "Soldier.h"
 #include "Weapon.h"
-class Base {
+#include "Soldier.h"
+
+class HeadQuarter{
 public:
-    Base(std::string _name):name(_name){}
-    ~Base(){
+    HeadQuarter(std::string&& _name, int hp): name(_name),_health(hp){
+        printf("%s initialized!\n",name.c_str());
+    }
+    ~HeadQuarter(){
         for(auto p:_soldiers){
             free(p);
         }
@@ -24,9 +26,10 @@ public:
     std::string name;
     std::vector<Soldier*> _soldiers;
 
-    void create(int _idx, int _hp);
-    void alloc_weapon(Soldier* _soldier, int _id);
+    void create(int _idx, int _hp, int _dam);
+    //void alloc_weapon(Soldier* _soldier, int _id);
 
+    static std::string nameOrder[5];
     int blueOrder[5] = {0,1,2,3,4};
     int redOrder[5] = {1,4,3,0,2};
 
@@ -35,4 +38,4 @@ private:
 };
 
 
-#endif //WOW_BASE_H
+#endif //WOW_HEADQUARTER_H

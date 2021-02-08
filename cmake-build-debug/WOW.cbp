@@ -80,10 +80,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/Documents/ClionProjects/WOW/include/Base.h">
+		<Unit filename="D:/Documents/ClionProjects/WOW/include/City.h">
 			<Option target="WOW"/>
 		</Unit>
-		<Unit filename="D:/Documents/ClionProjects/WOW/include/City.h">
+		<Unit filename="D:/Documents/ClionProjects/WOW/include/HeadQuarter.h">
 			<Option target="WOW"/>
 		</Unit>
 		<Unit filename="D:/Documents/ClionProjects/WOW/include/Soldier.h">
@@ -95,10 +95,10 @@
 		<Unit filename="D:/Documents/ClionProjects/WOW/main.cpp">
 			<Option target="WOW"/>
 		</Unit>
-		<Unit filename="D:/Documents/ClionProjects/WOW/src/Base.cpp">
+		<Unit filename="D:/Documents/ClionProjects/WOW/src/City.cpp">
 			<Option target="WOW"/>
 		</Unit>
-		<Unit filename="D:/Documents/ClionProjects/WOW/src/City.cpp">
+		<Unit filename="D:/Documents/ClionProjects/WOW/src/HeadQuarter.cpp">
 			<Option target="WOW"/>
 		</Unit>
 		<Unit filename="D:/Documents/ClionProjects/WOW/src/Soldier.cpp">

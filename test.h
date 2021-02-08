@@ -7,12 +7,13 @@
 
 #include <cstdio>
 #include <string>
+#include <utility>
 #include <vector>
 #include "include/Soldier.h"
-
+#include "include/Weapon.h"
 class testClass{
 public:
-    testClass(){}
+    testClass(std::string _name):name(std::move(_name)){}
     ~testClass(){}
 
     std::string name;
@@ -20,8 +21,8 @@ public:
     std::vector<Soldier*> _soldiers;
 
 
-    void testSoldier(Soldier* _soldier, int _idx);
-    void call(int,int);
+    void alloc_weapon(Soldier* _soldier, int _idx);
+    void create(int,int);
 
 };
 #endif //WOW_TEST_H

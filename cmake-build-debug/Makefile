@@ -169,33 +169,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/Base.obj: src/Base.cpp.obj
-
-.PHONY : src/Base.obj
-
-# target to build an object file
-src/Base.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/Base.cpp.obj
-.PHONY : src/Base.cpp.obj
-
-src/Base.i: src/Base.cpp.i
-
-.PHONY : src/Base.i
-
-# target to preprocess a source file
-src/Base.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/Base.cpp.i
-.PHONY : src/Base.cpp.i
-
-src/Base.s: src/Base.cpp.s
-
-.PHONY : src/Base.s
-
-# target to generate assembly for a file
-src/Base.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/Base.cpp.s
-.PHONY : src/Base.cpp.s
-
 src/City.obj: src/City.cpp.obj
 
 .PHONY : src/City.obj
@@ -222,6 +195,33 @@ src/City.s: src/City.cpp.s
 src/City.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/City.cpp.s
 .PHONY : src/City.cpp.s
+
+src/HeadQuarter.obj: src/HeadQuarter.cpp.obj
+
+.PHONY : src/HeadQuarter.obj
+
+# target to build an object file
+src/HeadQuarter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj
+.PHONY : src/HeadQuarter.cpp.obj
+
+src/HeadQuarter.i: src/HeadQuarter.cpp.i
+
+.PHONY : src/HeadQuarter.i
+
+# target to preprocess a source file
+src/HeadQuarter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/HeadQuarter.cpp.i
+.PHONY : src/HeadQuarter.cpp.i
+
+src/HeadQuarter.s: src/HeadQuarter.cpp.s
+
+.PHONY : src/HeadQuarter.s
+
+# target to generate assembly for a file
+src/HeadQuarter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\WOW.dir\build.make CMakeFiles/WOW.dir/src/HeadQuarter.cpp.s
+.PHONY : src/HeadQuarter.cpp.s
 
 src/Soldier.obj: src/Soldier.cpp.obj
 
@@ -316,12 +316,12 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... src/Base.obj
-	@echo ... src/Base.i
-	@echo ... src/Base.s
 	@echo ... src/City.obj
 	@echo ... src/City.i
 	@echo ... src/City.s
+	@echo ... src/HeadQuarter.obj
+	@echo ... src/HeadQuarter.i
+	@echo ... src/HeadQuarter.s
 	@echo ... src/Soldier.obj
 	@echo ... src/Soldier.i
 	@echo ... src/Soldier.s

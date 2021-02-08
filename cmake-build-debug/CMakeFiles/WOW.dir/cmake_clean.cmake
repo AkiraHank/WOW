@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/WOW.dir/main.cpp.obj"
-  "CMakeFiles/WOW.dir/src/Base.cpp.obj"
   "CMakeFiles/WOW.dir/src/City.cpp.obj"
+  "CMakeFiles/WOW.dir/src/HeadQuarter.cpp.obj"
   "CMakeFiles/WOW.dir/src/Soldier.cpp.obj"
   "CMakeFiles/WOW.dir/src/Weapon.cpp.obj"
   "CMakeFiles/WOW.dir/test.cpp.obj"
