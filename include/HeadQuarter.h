@@ -12,11 +12,12 @@
 class HeadQuarter{
 public:
     HeadQuarter(std::string&& _name, int hp): name(_name),_health(hp){
-        printf("%s initialized!\n",name.c_str());
+        printf("%s headquarter initialized!\n",name.c_str());
     }
     ~HeadQuarter(){
+        //printf("Base destruction called!\n");
         for(auto p:_soldiers){
-            free(p);
+            delete(p);
         }
     }
 

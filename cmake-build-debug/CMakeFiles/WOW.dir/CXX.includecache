@@ -28,20 +28,6 @@ D:/Documents/ClionProjects/WOW/include/Weapon.h
 Soldier.h
 D:/Documents/ClionProjects/WOW/include/Soldier.h
 
-D:/Documents/ClionProjects/WOW/main.cpp
-iostream
--
-include/Soldier.h
-D:/Documents/ClionProjects/WOW/include/Soldier.h
-include/HeadQuarter.h
-D:/Documents/ClionProjects/WOW/include/HeadQuarter.h
-include/Weapon.h
-D:/Documents/ClionProjects/WOW/include/Weapon.h
-
-D:/Documents/ClionProjects/WOW/src/HeadQuarter.cpp
-../include/HeadQuarter.h
-D:/Documents/ClionProjects/WOW/include/HeadQuarter.h
-
 D:/Documents/ClionProjects/WOW/src/Soldier.cpp
 ../include/Soldier.h
 D:/Documents/ClionProjects/WOW/include/Soldier.h
@@ -51,26 +37,4 @@ D:/Documents/ClionProjects/WOW/include/Weapon.h
 D:/Documents/ClionProjects/WOW/include/HeadQuarter.h
 algorithm
 -
-
-D:/Documents/ClionProjects/WOW/src/Weapon.cpp
-../include/Weapon.h
-D:/Documents/ClionProjects/WOW/include/Weapon.h
-
-D:/Documents/ClionProjects/WOW/test.cpp
-test.h
-D:/Documents/ClionProjects/WOW/test.h
-
-D:/Documents/ClionProjects/WOW/test.h
-cstdio
--
-string
--
-utility
--
-vector
--
-include/Soldier.h
-D:/Documents/ClionProjects/WOW/include/Soldier.h
-include/Weapon.h
-D:/Documents/ClionProjects/WOW/include/Weapon.h
 

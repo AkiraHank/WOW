@@ -8,14 +8,20 @@
 #include <algorithm>
 
 void Soldier::die(){
-
+    for(auto it=this->base->_soldiers.begin();it!=this->base->_soldiers.end();it++){
+        if((*it)->_id == this->_id) {
+            this->base->_soldiers.erase(it,it+1);
+            break;
+        }
+    }
+    delete(this);
 }
 
 void Soldier::report() {
     if(this->_weapons.empty())
-        printf("%s %s %d has no weapon!\n",base->name.c_str(),HeadQuarter::nameOrder[_typeId].c_str(),_id);
+        printf("%s %s %d has no weapon!\n",this->base->name.c_str(),HeadQuarter::nameOrder[_typeId].c_str(),_id);
     else{
-        printf("%s %d has %d weapons:",HeadQuarter::nameOrder[_typeId].c_str(),_id,this->_weapons.size());
+        printf("%s %s %d has %d weapons:",this->base->name.c_str(),HeadQuarter::nameOrder[_typeId].c_str(),_id,this->_weapons.size());
         for(auto w:this->_weapons){
             printf(" %s",Weapon::wOrder[w->_wNum%3].c_str());
         }
@@ -25,18 +31,22 @@ void Soldier::report() {
 
 void Soldier::hurted(int dam) {
     this->_strength -= dam;
+    printf("%s %s %d took %d damage.\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,dam);
     if(this->_strength <= 0){ //die
-
+        this->die();
     }
-    printf("%s %d took %d damage\n",HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,dam);
 }
 
+Soldier::Soldier(int hp, int dam, int id):_strength(hp),_damage(dam),_id(id){}
 
+Soldier::~Soldier() noexcept {
+    printf("%s %s has been slain!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str());
+}
 //dragon
 
 dragon::~dragon() noexcept {
     for(auto w:this->_weapons){
-        free(w);
+        delete(w);
     }
 }
 
@@ -84,7 +94,7 @@ void dragon::yell() {
 
 ninja::~ninja() noexcept {
     for(auto w:this->_weapons){
-        free(w);
+        delete(w);
     }
 }
 
@@ -134,7 +144,7 @@ void ninja::march() {
 
 iceman::~iceman() noexcept {
     for(auto w:this->_weapons){
-        free(w);
+        delete(w);
     }
 }
 
@@ -175,7 +185,7 @@ void iceman::march() {
 
 lion::~lion() noexcept {
     for(auto w:this->_weapons){
-        free(w);
+        delete(w);
     }
 }
 
@@ -215,8 +225,9 @@ void lion::march() {
 //}
 
 wolf::~wolf() noexcept {
+    //printf("wolf destructed!\n");
     for(auto w:this->_weapons){
-        free(w);
+        delete(w);
     }
 }
 

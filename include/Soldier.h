@@ -11,10 +11,8 @@ class HeadQuarter;
 
 class Soldier{
 public:
-    Soldier(int hp, int dam, int id):_strength(hp),_damage(dam),_id(id){}
-    virtual ~Soldier(){
-        printf("Soldier destructed!\n");
-    }
+    Soldier(int hp, int dam, int id);
+    virtual ~Soldier();
     int _strength;
     int _id;
     int _damage;
@@ -26,11 +24,13 @@ public:
     virtual void attack(int , Soldier*)=0;
     virtual void get_weapon()=0;
     void report();
-    void die();
-    void hurted(int);
 
     HeadQuarter* base;
     virtual void march()=0;
+    void hurted(int);
+
+private:
+    void die();
 };
 
 

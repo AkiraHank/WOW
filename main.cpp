@@ -9,17 +9,13 @@ int main() {
     auto Blue_base = new HeadQuarter("blue",10000);
 
     Red_base->create(2,400,100);
-    Blue_base->create(1,300,50);
+    Blue_base->create(1,15,50);
 
     Red_base->_soldiers[0]->report();
-    fflush(stdout);
     Red_base->_soldiers[0]->attack(0,Blue_base->_soldiers[0]);
-    fflush(stdout);
     Red_base->_soldiers[0]->report();
-    fflush(stdout);
 
-    free(Red_base);
-    free(Blue_base);
-    getchar();
+    delete(Red_base);
+    delete(Blue_base);
     return 0;
 }
