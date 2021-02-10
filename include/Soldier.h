@@ -30,7 +30,7 @@ public:
     void report();
 
     HeadQuarter* base = nullptr;
-    virtual void march()=0;
+    void march(std::vector<City*>& cities);
     void hurted(int);
     virtual void rob(Soldier* ){};
 private:
@@ -50,7 +50,7 @@ public:
     void yell();
     void attack(int, Soldier*) override;
     void get_weapon() override;
-    void march() override;
+    //void march(std::vector<City*>& cities) override;
 };
 
 class ninja : public Soldier{
@@ -64,7 +64,7 @@ public:
 
     void attack(int, Soldier*) override;
     void get_weapon() override;
-    void march() override;
+    //void march(std::vector<City*>& cities) override;
 };
 
 class iceman : public Soldier{
@@ -78,7 +78,7 @@ public:
 
     void attack(int, Soldier*) override;
     void get_weapon() override;
-    void march() override;
+    //void march(std::vector<City*>& cities) override;
 };
 
 class lion : public Soldier{
@@ -92,7 +92,7 @@ public:
 
     void attack(int, Soldier*) override;
     void get_weapon() override;
-    void march() override;
+    //void march(std::vector<City*>& cities) override;
     int loyalty;
 };
 
@@ -103,11 +103,11 @@ public:
         this->_typeId = 2;
     }
     ~wolf();
-    void rob(Soldier* _soldier);
+    void rob(Soldier* _soldier) override;
 
     void attack(int, Soldier*) override;
     void get_weapon() override{}
-    void march() override;
+    //void march(std::vector<City*>& cities) override;
 };
 
 #endif //WOW_SOLDIER_H

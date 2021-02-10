@@ -30,10 +30,8 @@ void City::battle(){
         len2 = std::max(static_cast<int>(second->_weapons.size()),1);
     int id1=0,id2=0;
 
-
     while(this->_is_red_alive && this->_is_blue_alive){
         first->attack((id1++)%len1,second);
         second->attack((id2++)%len2,first);
     }
-
 }

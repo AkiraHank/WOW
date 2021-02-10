@@ -38,6 +38,36 @@ void Soldier::hurted(int dam) {
     }
 }
 
+void Soldier::march(std::vector<City*>& cities) {
+    int dc = this->base->name=="red"? 1:-1;
+    int nextId = this->base->_city_id+dc-1;
+    if(this->_city == nullptr){
+        if(dc==1){
+            this->_city = cities[nextId];
+            this->_city->_is_red_alive = true;
+        }
+        else{
+            this->_city = cities[nextId];
+            this->_city->_is_blue_alive = true;
+        }
+    }else{
+        if(dc==1){
+            this->_city->_is_red_alive = false;
+            nextId = this->_city->_city_id+1;
+            if(nextId>=cities.size()) return;
+            this->_city = cities[nextId];
+            this->_city->_is_red_alive = true;
+        }
+        else {
+            this->_city->_is_blue_alive = false;
+            nextId = this->_city->_city_id+1;
+            if(nextId<=0) return;
+            this->_city = cities[nextId];
+            this->_city->_is_blue_alive = true;
+        }
+    }
+}
+
 Soldier::Soldier(int hp, int dam, int id):_strength(hp),_damage(dam),_id(id){}
 
 Soldier::~Soldier() noexcept {
@@ -80,17 +110,12 @@ void dragon::get_weapon() {
     }
 }
 
-void dragon::march() {
 
-}
 
 void dragon::yell() {
     printf("I survived again!\n");
 }
-//ninja
-//ninja::ninja(int) {
-//
-//}
+
 
 ninja::~ninja() noexcept {
     for(auto w:this->_weapons){
@@ -135,13 +160,10 @@ void ninja::get_weapon() {
     }
 }
 
-void ninja::march() {
-
-}
-//iceman
-//iceman::iceman(int) {
+//void ninja::march(std::vector<City*>& cities) {
 //
 //}
+
 
 iceman::~iceman() noexcept {
     for(auto w:this->_weapons){
@@ -177,9 +199,9 @@ void iceman::get_weapon() {
     }
 }
 
-void iceman::march() {
-
-}
+//void iceman::march(std::vector<City*>& cities) {
+//
+//}
 //lion
 //lion::lion(int k) {
 //    lion::loyalty = k;
@@ -219,9 +241,9 @@ void lion::get_weapon() {
     }
 }
 
-void lion::march() {
-
-}
+//void lion::march(std::vector<City*>& cities) {
+//
+//}
 //wolf
 //wolf::wolf(int) {
 //
@@ -239,9 +261,9 @@ void wolf::attack(int _weaponId, Soldier* _soldier) {
         this->_weapons[_weaponId]->attack(_soldier);
 }
 
-void wolf::march() {
-
-}
+//void wolf::march(std::vector<City*>& cities) {
+//
+//}
 
 void wolf::rob(Soldier *_soldier) {
     if(!_soldier->_weapons.empty() && _soldier->_typeId != 2){
