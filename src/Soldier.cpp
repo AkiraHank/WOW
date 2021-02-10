@@ -5,16 +5,17 @@
 #include "../include/Soldier.h"
 #include "../include/Weapon.h"
 #include "../include/HeadQuarter.h"
+#include "../include/City.h"
 #include <algorithm>
 
 void Soldier::die(){
     for(auto it=this->base->_soldiers.begin();it!=this->base->_soldiers.end();it++){
         if((*it)->_id == this->_id) {
             this->base->_soldiers.erase(it,it+1);
+            delete(this);
             break;
         }
     }
-    delete(this);
 }
 
 void Soldier::report() {
@@ -51,9 +52,8 @@ dragon::~dragon() noexcept {
 }
 
 void dragon::attack(int _weaponId, Soldier* _soldier) {
-    if(this->_weapons.empty()) return;
-    std::sort(this->_weapons.begin(),this->_weapons.end(),Weapon::sortWeapon);
-    this->_weapons[_weaponId]->attack(_soldier);
+    if(!this->_weapons.empty())
+        this->_weapons[_weaponId]->attack(_soldier);
     if(this->_strength>0) yell();
 }
 
@@ -99,7 +99,8 @@ ninja::~ninja() noexcept {
 }
 
 void ninja::attack(int _weaponId, Soldier* _soldier) {
-    this->_weapons[_weaponId]->attack(_soldier);
+    if(!this->_weapons.empty())
+        this->_weapons[_weaponId]->attack(_soldier);
 }
 
 void ninja::get_weapon() {
@@ -149,7 +150,8 @@ iceman::~iceman() noexcept {
 }
 
 void iceman::attack(int _weaponId, Soldier* _soldier) {
-    this->_weapons[_weaponId]->attack(_soldier);
+    if(!this->_weapons.empty())
+        this->_weapons[_weaponId]->attack(_soldier);
 }
 
 void iceman::get_weapon() {
@@ -190,7 +192,8 @@ lion::~lion() noexcept {
 }
 
 void lion::attack(int _weaponId, Soldier* _soldier) {
-    this->_weapons[_weaponId]->attack(_soldier);
+    if(!this->_weapons.empty())
+        this->_weapons[_weaponId]->attack(_soldier);
 }
 
 void lion::get_weapon() {
@@ -232,21 +235,19 @@ wolf::~wolf() noexcept {
 }
 
 void wolf::attack(int _weaponId, Soldier* _soldier) {
-    int minIdx = 0x7fffffff, id2Rob = -1;
-    for(int i =0;i<_soldier->_weapons.size();i++){
-        if(_soldier->_weapons[i]->_wNum < minIdx){
-            minIdx = _soldier->_weapons[i]->_wNum;
-            id2Rob = i;
-        }
-    }
-    if(id2Rob != -1 && _soldier->_typeId != 2){ // weapon robbed
-        this->_weapons.emplace_back(_soldier->_weapons[id2Rob]);
-        _soldier->_weapons[id2Rob]->_user = this;
-        _soldier->_weapons.erase(_soldier->_weapons.begin()+id2Rob);
+    if(!this->_weapons.empty())
         this->_weapons[_weaponId]->attack(_soldier);
-    }
 }
 
 void wolf::march() {
 
+}
+
+void wolf::rob(Soldier *_soldier) {
+    if(!_soldier->_weapons.empty() && _soldier->_typeId != 2){
+        this->_weapons.emplace_back(_soldier->_weapons[0]);
+        _soldier->_weapons[0]->_user = this;
+        _soldier->_weapons.erase(_soldier->_weapons.begin());
+        std::sort(this->_weapons.begin(),this->_weapons.end(),wCmp);
+    }
 }

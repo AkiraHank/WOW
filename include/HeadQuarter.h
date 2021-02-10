@@ -11,7 +11,7 @@
 
 class HeadQuarter{
 public:
-    HeadQuarter(std::string&& _name, int hp): name(_name),_health(hp){
+    HeadQuarter(std::string&& _name, int hp, int id): name(_name),_health(hp),_city_id(id){
         printf("%s headquarter initialized!\n",name.c_str());
     }
     ~HeadQuarter(){
@@ -26,6 +26,7 @@ public:
     bool _state;
     std::string name;
     std::vector<Soldier*> _soldiers;
+    int _city_id;
 
     void create(int _idx, int _hp, int _dam);
     //void alloc_weapon(Soldier* _soldier, int _id);

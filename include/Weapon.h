@@ -4,7 +4,8 @@
 
 #ifndef WOW_WEAPON_H
 #define WOW_WEAPON_H
-#include "Soldier.h"
+#include <string>
+class Soldier;
 
 class Weapon{
 public:
@@ -14,10 +15,11 @@ public:
     int _damage;
     int _wNum;
     static bool sortWeapon(Weapon*,Weapon*);
-    Soldier* _user;
+    Soldier* _user = nullptr;
 
     static std::string wOrder[3];
-private:
+
+    int _times = -1;
 };
 
 class sword : public Weapon{
@@ -34,7 +36,6 @@ public:
 
 class bomb : public Weapon{
 public:
-    bool status = true;
     bomb(int _dmg){
         _damage = _dmg*0.4;
         _wNum = 1;
@@ -50,12 +51,11 @@ public:
     arrow(int _dmg){
         _damage = _dmg*0.3;
         _wNum = 2;
+        _times = 2;
     }
     ~arrow(){}
 
     void attack(Soldier*);
-private:
-    int _times;
 };
 
 #endif //WOW_WEAPON_H

@@ -8,6 +8,8 @@
 #include <iostream>
 class Weapon;
 class HeadQuarter;
+class City;
+bool wCmp(Weapon* a, Weapon* b);
 
 class Soldier{
 public:
@@ -18,6 +20,8 @@ public:
     int _damage;
     int _typeId;
 
+    City* _city = nullptr;
+
     std::vector<Weapon*> _weapons;
     int _weaponIdx;
 
@@ -25,10 +29,10 @@ public:
     virtual void get_weapon()=0;
     void report();
 
-    HeadQuarter* base;
+    HeadQuarter* base = nullptr;
     virtual void march()=0;
     void hurted(int);
-
+    virtual void rob(Soldier* ){};
 private:
     void die();
 };
@@ -99,9 +103,7 @@ public:
         this->_typeId = 2;
     }
     ~wolf();
-    void rob(Soldier* _soldier){
-
-    }
+    void rob(Soldier* _soldier);
 
     void attack(int, Soldier*) override;
     void get_weapon() override{}
