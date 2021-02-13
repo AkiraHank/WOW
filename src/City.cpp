@@ -12,7 +12,7 @@ bool wCmp(Weapon* a, Weapon* b){
 }
 
 void City::battle(){
-    Soldier* first,*second;
+    Soldier* first = nullptr,*second = nullptr;
     if(this->_city_id & 1){ //odd id
         first = this->red_soldier;
         second = this->blue_soldier;
@@ -32,7 +32,7 @@ void City::battle(){
         len2 = std::max(static_cast<int>(second->_weapons.size()),1);
     int id1=0,id2=0;
 
-    while(this->_is_red_alive && this->_is_blue_alive){ //武器数量没了怎么办
+    while(this->_is_red_alive && this->_is_blue_alive && (!first->_weapons.empty() || !second->_weapons.empty())){ //武器数量没了怎么办
         first->attack((id1++)%len1,second);
         if(this->_is_red_alive && this->_is_blue_alive)
             second->attack((id2++)%len2,first);

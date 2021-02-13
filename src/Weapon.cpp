@@ -12,12 +12,12 @@ void sword::attack(Soldier *_soldier) {
 }
 
 void bomb::attack(Soldier *_soldier) {
+    printf("BOMB!!!!\n");
     _soldier->hurted(this->_damage);
     if(this->_user->_typeId != 3)
         this->_user->hurted(this->_damage/2);
     for(auto it=this->_user->_weapons.begin();it!=this->_user->_weapons.end();it++){
         if((*it)->_wNum == this->_wNum){
-            printf("bomb used up!\n");
             this->_user->_weapons.erase(it,it+1);
             delete(this);
             break;

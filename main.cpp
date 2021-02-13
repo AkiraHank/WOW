@@ -26,10 +26,22 @@ int main() {
         Blue_base->create(rIdx+Time,u(e),u(e)/2);
         for(auto s:Red_base->_soldiers) s->march(cities,Blue_base);
         for(auto s:Blue_base->_soldiers) s->march(cities,Red_base);
+        if(Red_base->_is_occupied || Blue_base->_is_occupied) break;
         for(auto c:cities) c->battle();
         fflush(stdout);
         Time += 1;
+        if(Time & 1) {
+            for(auto s:Red_base->_soldiers) s->report();
+            for(auto s:Blue_base->_soldiers) s->report();
+        }
+
     }
+
+    for(auto s:Red_base->_soldiers) s->report();
+    for(auto s:Blue_base->_soldiers) s->report();
+
+    if(Red_base->_is_occupied) printf("Blue won!!\n");
+    else printf("Red won!!\n");
 
     for(auto c:cities) delete(c);
     delete(Red_base);

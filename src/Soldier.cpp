@@ -9,6 +9,7 @@
 #include <algorithm>
 
 void Soldier::die(){
+    printf("%s %s %d has been slain!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id);
     if(this->_city != nullptr){
         if(this->base->name == "red"){
             this->_city->_is_red_alive = false;
@@ -23,6 +24,7 @@ void Soldier::die(){
         if((*it)->_id == this->_id) {
             this->base->_soldiers.erase(it,it+1);
             delete(this);
+            fflush(stdout);
             break;
         }
     }
@@ -42,7 +44,7 @@ void Soldier::report() {
 
 void Soldier::hurted(int dam) {
     this->_strength -= dam;
-    printf("%s %s %d took %d damage.\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,dam);
+    printf("%s %s %d took %d damage. (%d->%d)\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,dam,this->_strength+dam,this->_strength);
     if(this->_strength <= 0){ //die
         this->die();
     }
@@ -57,20 +59,29 @@ void Soldier::march(std::vector<City*>& cities, HeadQuarter* head) {
             this->_city = cities[nextId];
             this->_city->_is_red_alive = true;
             this->_city->red_soldier = this;
-            printf("%s %s has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_city->_city_id);
+            //("%s %s %d has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,this->_city->_city_id);
         }
         else{//blue
             this->_city = cities[nextId];
             this->_city->_is_blue_alive = true;
             this->_city->blue_soldier = this;
-            printf("%s %s has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_city->_city_id);
+            //printf("%s %s %d has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,this->_city->_city_id);
         }
     }else{
         int nextId = this->_city->_city_id+dc;
         if(nextId == 0 || nextId == cities.size()+1){ //taking the headquarter
+            if(this->base->name == "red"){
+                this->_city->_is_red_alive = false;
+                this->_city->red_soldier = nullptr;
+            }
+            else{
+                this->_city->_is_blue_alive = false;
+                this->_city->blue_soldier = nullptr;
+            }
             this->_city = nullptr;
             head->_is_occupied = true;
-            printf("%s %s has taken enemy's headquarter!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str());
+            printf("%s %s %d has taken enemy's headquarter!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id);
+            return;
         }
         else if(dc==1){ //red
             this->_city->_is_red_alive = false;
@@ -78,7 +89,7 @@ void Soldier::march(std::vector<City*>& cities, HeadQuarter* head) {
             this->_city = cities[nextId-1];
             this->_city->_is_red_alive = true;
             this->_city->red_soldier = this;
-            printf("%s %s has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_city->_city_id);
+            //printf("%s %s %d has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,this->_city->_city_id);
         }
         else { //blue
             this->_city->_is_blue_alive = false;
@@ -86,15 +97,16 @@ void Soldier::march(std::vector<City*>& cities, HeadQuarter* head) {
             this->_city = cities[nextId-1];
             this->_city->_is_blue_alive = true;
             this->_city->blue_soldier = this;
-            printf("%s %s has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_city->_city_id);
+            //printf("%s %s %d has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,this->_city->_city_id);
         }
+        printf("%s %s %d has marched to city %d!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str(),this->_id,this->_city->_city_id);
     }
 }
 
 Soldier::Soldier(int hp, int dam, int id):_strength(hp),_damage(dam),_id(id){}
 
 Soldier::~Soldier() noexcept {
-    printf("%s %s has been slain!\n",this->base->name.c_str(),HeadQuarter::nameOrder[this->_typeId].c_str());
+
 }
 //dragon
 
@@ -105,8 +117,10 @@ dragon::~dragon() noexcept {
 }
 
 void dragon::attack(int _weaponId, Soldier* _soldier) {
-    if(!this->_weapons.empty())
-        this->_weapons[_weaponId]->attack(_soldier);
+    if(this->_weapons.empty()) return;
+    printf("%s dragon %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    this->_weapons[_weaponId]->attack(_soldier);
     if(this->_strength>0) yell();
 }
 
@@ -147,8 +161,10 @@ ninja::~ninja() noexcept {
 }
 
 void ninja::attack(int _weaponId, Soldier* _soldier) {
-    if(!this->_weapons.empty())
-        this->_weapons[_weaponId]->attack(_soldier);
+    if(this->_weapons.empty()) return;
+    printf("%s ninja %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    this->_weapons[_weaponId]->attack(_soldier);
 }
 
 void ninja::get_weapon() {
@@ -195,8 +211,10 @@ iceman::~iceman() noexcept {
 }
 
 void iceman::attack(int _weaponId, Soldier* _soldier) {
-    if(!this->_weapons.empty())
-        this->_weapons[_weaponId]->attack(_soldier);
+    if(this->_weapons.empty()) return;
+    printf("%s iceman %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    this->_weapons[_weaponId]->attack(_soldier);
 }
 
 void iceman::get_weapon() {
@@ -237,8 +255,10 @@ lion::~lion() noexcept {
 }
 
 void lion::attack(int _weaponId, Soldier* _soldier) {
-    if(!this->_weapons.empty())
-        this->_weapons[_weaponId]->attack(_soldier);
+    if(this->_weapons.empty()) return;
+    printf("%s lion %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    this->_weapons[_weaponId]->attack(_soldier);
 }
 
 void lion::get_weapon() {
@@ -280,8 +300,10 @@ wolf::~wolf() noexcept {
 }
 
 void wolf::attack(int _weaponId, Soldier* _soldier) {
-    if(!this->_weapons.empty())
-        this->_weapons[_weaponId]->attack(_soldier);
+    if(this->_weapons.empty()) return;
+    printf("%s wolf %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    this->_weapons[_weaponId]->attack(_soldier);
 }
 
 //void wolf::march(std::vector<City*>& cities) {
