@@ -52,7 +52,10 @@ void Soldier::hurted(int dam) {
 
 void Soldier::march(std::vector<City*>& cities, HeadQuarter* head) {
     int dc = this->base->name=="red"? 1:-1;
-    if(this->_typeId == 0) this->_strength -= this->_strength/10;
+    if(this->_typeId == 0){
+        this->_strength -= this->_strength/10;
+        printf("%s %s is melting!\n",this->base->name.c_str(),HeadQuarter::nameOrder[_typeId].c_str());
+    }
     if(this->_city == nullptr){ //first step
         int nextId = this->base->_city_id+dc-1;
         if(dc==1){ //red
@@ -118,8 +121,8 @@ dragon::~dragon() noexcept {
 
 void dragon::attack(int _weaponId, Soldier* _soldier) {
     if(this->_weapons.empty()) return;
-    printf("%s dragon %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
-           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    printf("%s dragon %d attacked %s %s %d with %s\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id, Weapon::wOrder[this->_weapons[_weaponId]->_wNum].c_str());
     this->_weapons[_weaponId]->attack(_soldier);
     if(this->_strength>0) yell();
 }
@@ -162,8 +165,8 @@ ninja::~ninja() noexcept {
 
 void ninja::attack(int _weaponId, Soldier* _soldier) {
     if(this->_weapons.empty()) return;
-    printf("%s ninja %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
-           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    printf("%s ninja %d attacked %s %s %d with %s\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id, Weapon::wOrder[this->_weapons[_weaponId]->_wNum].c_str());
     this->_weapons[_weaponId]->attack(_soldier);
 }
 
@@ -212,8 +215,8 @@ iceman::~iceman() noexcept {
 
 void iceman::attack(int _weaponId, Soldier* _soldier) {
     if(this->_weapons.empty()) return;
-    printf("%s iceman %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
-           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    printf("%s iceman %d attacked %s %s %d with %s\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id, Weapon::wOrder[this->_weapons[_weaponId]->_wNum].c_str());
     this->_weapons[_weaponId]->attack(_soldier);
 }
 
@@ -256,8 +259,8 @@ lion::~lion() noexcept {
 
 void lion::attack(int _weaponId, Soldier* _soldier) {
     if(this->_weapons.empty()) return;
-    printf("%s lion %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
-           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    printf("%s lion %d attacked %s %s %d with %s\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id, Weapon::wOrder[this->_weapons[_weaponId]->_wNum].c_str());
     this->_weapons[_weaponId]->attack(_soldier);
 }
 
@@ -301,8 +304,8 @@ wolf::~wolf() noexcept {
 
 void wolf::attack(int _weaponId, Soldier* _soldier) {
     if(this->_weapons.empty()) return;
-    printf("%s wolf %d attacked %s %s %d\n",this->base->name.c_str(),this->_id,
-           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id);
+    printf("%s wolf %d attacked %s %s %d with %s\n",this->base->name.c_str(),this->_id,
+           _soldier->base->name.c_str(),HeadQuarter::nameOrder[_soldier->_typeId].c_str(),_soldier->_id, Weapon::wOrder[this->_weapons[_weaponId]->_wNum].c_str());
     this->_weapons[_weaponId]->attack(_soldier);
 }
 

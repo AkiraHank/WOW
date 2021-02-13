@@ -23,7 +23,6 @@ public:
     City* _city = nullptr;
 
     std::vector<Weapon*> _weapons;
-    int _weaponIdx;
 
     virtual void attack(int , Soldier*)=0;
     virtual void get_weapon()=0;
