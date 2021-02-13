@@ -33,17 +33,15 @@ string
 D:/Documents/ClionProjects/WOW/main.cpp
 iostream
 -
+vector
+-
 include/Soldier.h
 D:/Documents/ClionProjects/WOW/include/Soldier.h
 include/HeadQuarter.h
 D:/Documents/ClionProjects/WOW/include/HeadQuarter.h
-include/Weapon.h
-D:/Documents/ClionProjects/WOW/include/Weapon.h
 include/City.h
 D:/Documents/ClionProjects/WOW/include/City.h
-vector
--
-string
+random
 -
 
 D:/Documents/ClionProjects/WOW/src/City.cpp

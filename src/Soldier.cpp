@@ -38,10 +38,11 @@ void Soldier::hurted(int dam) {
     }
 }
 
-void Soldier::march(std::vector<City*>& cities) {
+void Soldier::march(std::vector<City*>& cities, HeadQuarter* head) {
     int dc = this->base->name=="red"? 1:-1;
     int nextId = this->base->_city_id+dc-1;
-    if(this->_city == nullptr){
+    if(this->_typeId == 0) this->_strength -= this->_strength/10;
+    if(this->_city == nullptr){ //first step
         if(dc==1){
             this->_city = cities[nextId];
             this->_city->_is_red_alive = true;
@@ -51,7 +52,12 @@ void Soldier::march(std::vector<City*>& cities) {
             this->_city->_is_blue_alive = true;
         }
     }else{
-        if(dc==1){
+        nextId = this->_city->_city_id+dc;
+        if(nextId == 0 || nextId == cities.size()+1){ //taking the headquarter
+            this->_city = nullptr;
+            head->_is_occupied = true;
+        }
+        else if(dc==1){
             this->_city->_is_red_alive = false;
             nextId = this->_city->_city_id+1;
             if(nextId>=cities.size()) return;

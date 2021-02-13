@@ -23,7 +23,7 @@ public:
 
     int _soldier_id;
     int _health;
-    bool _state;
+    bool _is_occupied = false;
     std::string name;
     std::vector<Soldier*> _soldiers;
     int _city_id;

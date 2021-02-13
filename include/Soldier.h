@@ -30,7 +30,7 @@ public:
     void report();
 
     HeadQuarter* base = nullptr;
-    void march(std::vector<City*>& cities);
+    void march(std::vector<City*>& cities, HeadQuarter* head);
     void hurted(int);
     virtual void rob(Soldier* ){};
 private:
