@@ -8,8 +8,8 @@
 using std::vector;
 int main() {
     int k = 6;
-    auto Red_base = new HeadQuarter("red",10000,0);
-    auto Blue_base = new HeadQuarter("blue",10000,k+1);
+    auto Red_base = new HeadQuarter("red",4000,0);
+    auto Blue_base = new HeadQuarter("blue",4000,k+1);
 
     vector<City*> cities;
     for(int i=1;i<=k;i++){
@@ -18,15 +18,17 @@ int main() {
     }
 
     int Time = 0;
-    int rIdx=0,bIdx=0;
+    int rIdx=0,bIdx=2;
     std::default_random_engine e;
     std::uniform_int_distribution<unsigned> u(200, 1000);
     while(!Red_base->_is_occupied && !Blue_base->_is_occupied){
-        Red_base->create(rIdx,u(e),u(e)/2);
-        Blue_base->create(rIdx,u(e),u(e)/2);
+        Red_base->create(rIdx+Time,u(e),u(e)/2);
+        Blue_base->create(rIdx+Time,u(e),u(e)/2);
         for(auto s:Red_base->_soldiers) s->march(cities,Blue_base);
         for(auto s:Blue_base->_soldiers) s->march(cities,Red_base);
         for(auto c:cities) c->battle();
+        fflush(stdout);
+        Time += 1;
     }
 
     for(auto c:cities) delete(c);

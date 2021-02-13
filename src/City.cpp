@@ -20,6 +20,8 @@ void City::battle(){
         second = this->red_soldier;
         first = this->blue_soldier;
     }
+
+    if(first == nullptr || second == nullptr) return;
     std::sort(first->_weapons.begin(),first->_weapons.end(),wCmp);
     std::sort(second->_weapons.begin(),second->_weapons.end(),wCmp);
 
@@ -30,8 +32,9 @@ void City::battle(){
         len2 = std::max(static_cast<int>(second->_weapons.size()),1);
     int id1=0,id2=0;
 
-    while(this->_is_red_alive && this->_is_blue_alive){
+    while(this->_is_red_alive && this->_is_blue_alive){ //武器数量没了怎么办
         first->attack((id1++)%len1,second);
-        second->attack((id2++)%len2,first);
+        if(this->_is_red_alive && this->_is_blue_alive)
+            second->attack((id2++)%len2,first);
     }
 }
