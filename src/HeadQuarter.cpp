@@ -60,6 +60,7 @@ void HeadQuarter::create(int _idx, int _hp, int _dam) {
             break;
         }
     }
+    printf(" (%d->%d)\n",this->_health+_hp,this->_health);
 }
 
 

@@ -18,7 +18,7 @@ int main() {
     }
 
     int Rounds = 0;
-    int rIdx=0,bIdx=2;
+    int rIdx=3,bIdx=5;
     std::default_random_engine e;
     std::uniform_int_distribution<unsigned> u(200, 1000);
     while(!Red_base->_is_occupied && !Blue_base->_is_occupied){
@@ -28,7 +28,7 @@ int main() {
         for(auto s:Blue_base->_soldiers) s->march(cities,Red_base);
         if(Red_base->_is_occupied || Blue_base->_is_occupied) break;
         for(auto c:cities) c->battle();
-        fflush(stdout);
+        //fflush(stdout);
         Rounds += 1;
         if(Rounds & 1) {
             for(auto s:Red_base->_soldiers) s->report();
@@ -39,8 +39,8 @@ int main() {
     for(auto s:Red_base->_soldiers) s->report();
     for(auto s:Blue_base->_soldiers) s->report();
 
-    if(Red_base->_is_occupied) printf("Blue won!!\n");
-    else printf("Red won!!\n");
+    if(Red_base->_is_occupied) printf("Blue won!!");
+    else printf("Red won!!");
 
     for(auto c:cities) delete(c);
     delete(Red_base);

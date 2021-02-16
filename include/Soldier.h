@@ -40,7 +40,7 @@ private:
 class dragon : public Soldier{
 public:
     dragon(int hp, int dam, int id):Soldier(hp,dam,id){
-        printf("dragon %d born\n",_id);
+        printf("dragon %d born",_id);
         this->_typeId = 4;
         get_weapon();
     }
@@ -55,7 +55,7 @@ public:
 class ninja : public Soldier{
 public:
     ninja(int hp, int dam, int id):Soldier(hp,dam,id){
-        printf("ninja %d born\n",_id);
+        printf("ninja %d born",_id);
         this->_typeId = 3;
         get_weapon();
     }
@@ -69,7 +69,7 @@ public:
 class iceman : public Soldier{
 public:
     iceman(int hp, int dam, int id):Soldier(hp,dam,id){
-        printf("iceman %d born\n",_id);
+        printf("iceman %d born",_id);
         this->_typeId = 0;
         get_weapon();
     }
@@ -83,7 +83,7 @@ public:
 class lion : public Soldier{
 public:
     lion(int hp, int dam, int id, int loy):Soldier(hp,dam,id),loyalty(loy){
-        printf("lion %d born\n",_id);
+        printf("lion %d born",_id);
         this->_typeId = 1;
         get_weapon();
     }
@@ -98,7 +98,7 @@ public:
 class wolf : public Soldier{
 public:
     wolf(int hp, int dam, int id):Soldier(hp,dam,id){
-        printf("wolf %d born\n",_id);
+        printf("wolf %d born",_id);
         this->_typeId = 2;
     }
     ~wolf();

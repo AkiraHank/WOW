@@ -22,7 +22,6 @@ void City::battle(){
     }
 
     if(first == nullptr || second == nullptr) return;
-    printf("battle in city %d begins!\n",this->_city_id);
     std::sort(first->_weapons.begin(),first->_weapons.end(),wCmp);
     std::sort(second->_weapons.begin(),second->_weapons.end(),wCmp);
 
@@ -33,6 +32,7 @@ void City::battle(){
         len2 = std::max(static_cast<int>(second->_weapons.size()),1);
     int id1=0,id2=0;
 
+    printf("battle in city %d begins!\n",this->_city_id);
     while(this->_is_red_alive && this->_is_blue_alive && (!first->_weapons.empty() || !second->_weapons.empty())){
         first->attack((id1++)%len1,second);
         if(this->_is_red_alive && this->_is_blue_alive && !second->_weapons.empty())

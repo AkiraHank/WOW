@@ -54,7 +54,7 @@ void Soldier::march(std::vector<City*>& cities, HeadQuarter* head) {
     int dc = this->base->name=="red"? 1:-1;
     if(this->_typeId == 0){
         this->_strength -= this->_strength/10;
-        printf("%s %s is melting!\n",this->base->name.c_str(),HeadQuarter::nameOrder[_typeId].c_str());
+        printf("%s %s %d is melting!\n",this->base->name.c_str(),HeadQuarter::nameOrder[_typeId].c_str(),this->_id);
     }
     if(this->_city == nullptr){ //first step
         int nextId = this->base->_city_id+dc-1;
@@ -153,7 +153,7 @@ void dragon::get_weapon() {
 
 
 void dragon::yell() {
-    printf("%s dragon %d yelled: \"I survived again!\"\n",this->base->name.c_str(),this->_id);
+    printf("%s dragon %d yelled: \"I survived!\"\n",this->base->name.c_str(),this->_id);
 }
 
 
